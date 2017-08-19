@@ -1,4 +1,11 @@
 <?php
+/***********************************************************************************************************************
+ * Projet: Phpmesure
+ * Auteur: Tristan Fleury - tristan.fleury.gre@gmail.com
+ * Année de production: 2017
+ * Licence: GNU General Public License (GPL), version 3
+ * Copyright © 2017 Tristan Fleury
+ **********************************************************************************************************************/
 
 namespace viduc\phpmesureBundle\DependencyInjection;
 
@@ -22,7 +29,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('test')->end()
+                ->scalarNode('nomApplication')
+                    ->defaultValue('default')
+                    ->end()
+                ->scalarNode('serveurNom')
+                    ->defaultValue('localhost')
+                    ->end()
+                ->scalarNode('serveurPort')
+                    ->defaultValue('67543')
+                    ->end()
             ->end()
         ;
 

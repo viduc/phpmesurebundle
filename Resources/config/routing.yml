@@ -1,3 +1,12 @@
-viducphpmesure_homepage:
-    path:     /
-    defaults: { _controller: viducphpmesureBundle:Default:index }
+#***********************************************************************************************************************
+# * Projet: Phpmesure
+# * Auteur: Tristan Fleury - tristan.fleury.gre@gmail.com
+# * Année de production: 2017
+# * Licence: GNU General Public License (GPL), version 3
+# * Copyright © 2017 Tristan Fleury
+# **********************************************************************************************************************/
+
+
+#viducphpmesure_homepage:
+#    path:     /
+#    defaults: { _controller: viducphpmesureBundle:Default:index }
