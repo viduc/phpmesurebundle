@@ -1,0 +1,4 @@
+services:
+    viducphpmesure.test:
+        class: viduc\phpmesureBundle\Controller\DefaultController
+        arguments: ["@service_container"]

@@ -1,0 +1,3 @@
+viducphpmesure_homepage:
+    path:     /
+    defaults: { _controller: viducphpmesureBundle:Default:index }
