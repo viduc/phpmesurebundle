@@ -38,7 +38,7 @@ class DefaultController extends Controller
     
     public function test()
     {
-	return $this->container->getParameter('viducphpmesure.nomApplication');
+	return $this->getPhpmesure()->getNomApplication();
     }
     
     /**
