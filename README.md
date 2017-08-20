@@ -39,7 +39,7 @@ Activer ensuite le bundle dans le fichier AppKernel
 ```
 $bundles = [
     ...
-    viduc\phpmesureBundle\viducphpmesureBundle(),
+    new viduc\phpmesureBundle\viducphpmesureBundle(),
     ];
 ```
 ### Configuration
