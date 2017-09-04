@@ -19,27 +19,6 @@ class DefaultController extends Controller
      * @var objet container 
      */
     protected $container;
-	
-    /**
-     * Constructeur de l'objet (service)
-     * @param Object service-container
-     */
-    public function __construct($container)
-    {
-	$this->container = $container;
-        $this->setNomApplication($container->getParameter('viducphpmesure.nomApplication'));
-        $this->setServeurNom($container->getParameter('viducphpmesure.serveurNom'));
-        $this->setServeurPort($container->getParameter('viducphpmesure.serveurPort'));
-        $this->setPhpmesure(new Phpmesure());
-        $this->getPhpmesure()->setNomApplication($this->getNomApplication());
-        $this->getPhpmesure()->setServeurNom($this->getServeurNom());
-        $this->getPhpmesure()->setServeurPort($this->getServeurPort()); 
-    }
-    
-    public function test()
-    {
-	return $this->getPhpmesure()->getNomApplication();
-    }
     
     /**
      * phpmesure
@@ -67,6 +46,44 @@ class DefaultController extends Controller
      * Récupéré via la configuration de l'application (config.yml)
      */
     private $serveurPort;
+    
+    /**
+     * Constructeur de l'objet (service)
+     * @param Object service-container
+     */
+    public function __construct($container)
+    {
+	$this->container = $container;
+        $this->setNomApplication($container->getParameter('viducphpmesure.nomApplication'));
+        $this->setServeurNom($container->getParameter('viducphpmesure.serveurNom'));
+        $this->setServeurPort($container->getParameter('viducphpmesure.serveurPort'));
+        $this->setPhpmesure(new Phpmesure());
+        $this->getPhpmesure()->setNomApplication($this->getNomApplication());
+        $this->getPhpmesure()->setServeurNom($this->getServeurNom());
+        $this->getPhpmesure()->setServeurPort($this->getServeurPort()); 
+    }
+ 
+    /**
+     * Fonction appelée lors du lancement d'une méthode
+     * @param String $nomMethode
+     * @return String - le nom de la méthode concaténer avec le microtime 
+     */
+    public function debutMesure($nomMethode)
+    {
+        return $this->getPhpmesure()->debutMesure($nomMethode);
+    }
+  
+    /**
+     * Fonction appelée lors de l'arrêt d'une méthode
+     * L'enregistrement est envoyé ensuite au serveur
+     * @param String $index - le nom de la méthode concaténer avec le microtime
+     * @return Boolean
+     */
+    public function arretMesure($index = null)
+    {
+        return $this->getPhpmesure()->arretMesure($index);
+    }
+
     
 /***********************************************************************************************************************
  * GETTER ET SETTER 
