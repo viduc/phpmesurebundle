@@ -68,20 +68,24 @@ class DefaultController extends Controller
      * @param String $nomMethode
      * @return String - le nom de la méthode concaténer avec le microtime 
      */
-    public function debutMesure($nomMethode)
+/*    public function debutMesure($nomMethode)
     {
         return $this->getPhpmesure()->debutMesure($nomMethode);
     }
   
     /**
-     * Fonction appelée lors de l'arrêt d'une méthode
+     * Fonction appelée par une méthode pour le calcul et l'envoie de la mesure
      * L'enregistrement est envoyé ensuite au serveur
-     * @param String $index - le nom de la méthode concaténer avec le microtime
+     * @param microtime $debut Le microtime du début de la méthode
+     * @param microtime $fin Le microtime de fin de la méthode
      * @return Boolean
      */
-    public function arretMesure($index = null)
+    public function mesure($debut = null, $fin = null)
     {
-        return $this->getPhpmesure()->arretMesure($index);
+        if(is_null($debut)){$debut = $this->microtime_float();}
+        if(is_null($fin)){$fin = $debut;}
+        $trace = debug_backtrace();
+        return $this->getPhpmesure()->mesure($trace[1]["class"],$trace[1]["function"],$debut,$fin);
     }
 
     
